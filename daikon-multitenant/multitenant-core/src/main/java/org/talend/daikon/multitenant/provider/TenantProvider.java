@@ -30,4 +30,5 @@ public interface TenantProvider {
      * tenant.
      */
     Tenant findTenant(Object identity);
+
 }

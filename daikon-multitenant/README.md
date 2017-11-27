@@ -34,6 +34,24 @@ To clear the current tenant:
 TenancyContextHolder.clearContext();
 ```
 
+### ForAll
+
+The goal of the `ForAll` interface is to abstract tasks to be executed for all tenants, whether code is executed in a context where multi-tenancy is active or not.
+
+By default, the implementation is a `DefaultForAll` that do not perform anything related to tenants.
+
+The `ForAllTenants` implementation will execute a task for all tenants returned by the `TenantListProvider` implementation. It will take care of setting
+the initializing the TenancyContext and corresponding logging MDC.
+
+```
+import org.taalend.daikon.multinant.forall.*;
+
+TenantListProvider tenants = whatever();
+new ForAllTenants(tenants).execute( () -> { 
+    System.out.println(TenancyContextHolder.getContext().getTenant(); 
+});
+```
+
 ## Spring implementations
 
 ### Spring Web helpers

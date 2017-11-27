@@ -4,27 +4,44 @@
     <parent>
         <groupId>org.talend.daikon</groupId>
         <artifactId>daikon-multitenant</artifactId>
-        <version>0.20.0-SNAPSHOT</version>
+        <version>0.19.0-SNAPSHOT</version>
     </parent>
-    <artifactId>multitenant-core</artifactId>
+    <artifactId>multitenant-spring</artifactId>
     <packaging>jar</packaging>
-    <name>Daikon Multitenancy Core implementation</name>
+    <name>Daikon Multitenancy Spring implementation</name>
     <url>https://github.com/Talend/daikon</url>
 
     <dependencies>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.talend.daikon</groupId>
-            <artifactId>logging-event-layout</artifactId>
+            <artifactId>multitenant-core</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 </project>

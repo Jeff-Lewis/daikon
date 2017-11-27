@@ -20,6 +20,7 @@
     </properties>
     <modules>
         <module>multitenant-core</module>
+        <module>multitenant-spring</module>
         <module>multitenant-spring-async</module>
         <module>multitenant-spring-web</module>
     </modules>

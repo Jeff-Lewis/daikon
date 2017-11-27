@@ -21,6 +21,5 @@
         <module>daikon-spring-utils</module>
         <module>daikon-spring-mongo</module>
         <module>daikon-spring-security</module>
-        <module>daikon-spring-tenancy</module>
     </modules>
 </project>
