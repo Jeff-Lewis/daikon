@@ -1,10 +1,26 @@
-Multi tenancy support (for Spring data MongoDB)
+Support code for Spring Data MongoDB
 ================================================
+*Multi tenancy support - On-the-fly migration support*
 
 This module provides support for multi tenancy over Spring Data MongoDB:
 * Automatically wraps the previously existing MongoDbFactory to support multi-tenancy.
 * Allow to have the following information per tenant: database name, credentials and authentication database (MongoDb apparently authorizes to use another database name for authorization).
 * Allow to have a MongoDB host per tenant.
+
+This module also provides support for on-the-fly (aka per-document migration) for DBObjects.
+
+To use this module, first include it in your project classpath
+
+```xml
+    <dependency>
+        <groupId>org.talend.daikon</groupId>
+        <artifactId>daikon-spring-mongo</artifactId>
+        <version>latest daikon version</version>
+    </dependency>
+```
+
+Multi tenancy support
+=====================
 
 Known limitations
 -----------------
@@ -14,23 +30,13 @@ Known limitations
 Using multi tenancy support
 ---------------------------
 
-1) Include artifact in your application:
-
-```xml
-    <dependency>
-        <groupId>org.talend.daikon</groupId>
-        <artifactId>daikon-spring-mongo</artifactId>
-        <version>0.16.0-SNAPSHOT</version>
-    </dependency>
-```
-
-2) Make sure, `org.talend.daikon` in included in the Spring component scan
+1) Make sure, `org.talend.daikon` in included in the Spring component scan
 
 ```java
 @ComponentScan(basePackages = { "org.talend.myapp", "org.talend.daikon" })
 ```
 
-3) Include property in your application configuration:
+2) Include property in your application configuration:
 
 ```properties
 multi-tenancy.mongodb.active=true
@@ -38,7 +44,7 @@ multi-tenancy.mongodb.active=true
     
 Note: property defaults to `false`, so your application configuration to explicitly enable multi tenancy support.
 
-4) Add a `org.talend.daikon.spring.mongo.TenantInformationProvider` implementation in your application and expose it as a Spring Bean. For example:
+3) Add a `org.talend.daikon.spring.mongo.TenantInformationProvider` implementation in your application and expose it as a Spring Bean. For example:
 
 ```java
     @Bean
@@ -57,7 +63,7 @@ Note: property defaults to `false`, so your application configuration to explici
     }
 ```
 
-5) Add a `org.talend.daikon.spring.mongo.MongoClientProvider` implementation in your application and expose it as a Spring Bean. The implementation `org.talend.daikon.spring.mongo.SimpleMongoClientProvider` is available for quick start.
+4) Add a `org.talend.daikon.spring.mongo.MongoClientProvider` implementation in your application and expose it as a Spring Bean. The implementation `org.talend.daikon.spring.mongo.SimpleMongoClientProvider` is available for quick start.
 If you need more advanced cache management, consider providing a custom implementation. 
 
 5) On startup of your application, you should see:

@@ -20,6 +20,11 @@
 		<spring-data-mongodb.version>1.8.2.RELEASE</spring-data-mongodb.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>com.github.zafarkhaja</groupId>
+			<artifactId>java-semver</artifactId>
+			<version>0.9.0</version>
+		</dependency>
         <dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -52,6 +57,18 @@
             <artifactId>guava</artifactId>
             <version>21.0</version>
         </dependency>
+		<dependency>
+			<groupId>com.lordofthejars</groupId>
+			<artifactId>nosqlunit-mongodb</artifactId>
+			<version>0.10.0</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.github.fakemongo</groupId>
+					<artifactId>fongo</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
     </dependencies>
     <distributionManagement>
         <snapshotRepository>

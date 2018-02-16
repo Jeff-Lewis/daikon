@@ -1,0 +1,13 @@
+{
+  "b": {
+    "data": [
+      {
+        "_class": "org.talend.daikon.spring.mongo.migration.B",
+        "_version": "0.0.0",
+        "nested": {
+          "fromPreviousVersion": "From a previous version"
+        }
+      }
+    ]
+  }
+}

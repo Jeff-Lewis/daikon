@@ -1,5 +1,6 @@
 package org.talend.daikon.spring.mongo;
 
+import com.mongodb.Mongo;
 import com.mongodb.MongoClientURI;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,7 +39,7 @@ public class TestMultiTenantConfiguration {
     @Bean
     public MongoDbFactory defaultMongoDbFactory() {
         // Applications are expected to have one MongoDbFactory available
-        return new SimpleMongoDbFactory(new Fongo("Standard Mongo").getMongo(), "standard");
+        return new SimpleMongoDbFactory(new Fongo("standard").getMongo(), "standard");
     }
 
     @Bean
@@ -49,8 +50,8 @@ public class TestMultiTenantConfiguration {
 
     // A fake mongo for tests
     @Bean
-    public Fongo fongo() {
-        return new Fongo("MongoDB");
+    public Mongo fongo() {
+        return new Fongo("MongoDB").getMongo();
     }
 
     /**
